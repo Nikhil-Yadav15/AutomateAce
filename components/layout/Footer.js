@@ -1,148 +1,163 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
-export default function Footer() {
+export default function Footer({ onOpenModal = () => {} }) {
+  const fadeInUp = {
+    hidden:  { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+  };
+
+  const fadeInLeft = {
+    hidden:  { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+  };
+
+  const fadeInRight = {
+    hidden:  { opacity: 0, x: 30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+  };
+
+  const scaleIn = {
+    hidden:  { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } }
+  };
+
+  const staggerContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.2, delayChildren: 0.1 } }
+  };
+
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' }
+    { href: 'https://www.linkedin.com/company/automateace', icon: '💼' },
+    { href: 'https://x.com/automateaceoff?t=Xh2_kcdBRmTMpLpTaMowBA&s=08', icon: '🐦' },
+    { href: 'https://www.instagram.com/automateaceofficial/',              icon: '📷' },
+    { href: 'https://youtube.com/@automateace-90?si=im2BVNWRA5PnoA-8',    icon: '📺' }
   ];
 
   const quickLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '#services' },
-    { name: 'Our Work', href: '/workdone' },
-    { name: 'About', href: '/about' }
+    { href: '/',            label: 'Home'     },
+    { href: '/services',    label: 'Services' },
+    { href: '/workdone',    label: 'Our Work' },
+    { href: '/about',       label: 'About'    },
+    { href: '#contact',     label: 'Contact'  }
   ];
 
-  const services = [
-    'AI Chatbot Development',
-    'Process Automation',
-    'Data Analytics',
-    'Digital Transformation'
+  const aiSolutions = [
+    'AI Voice Assistant',
+    'Marketing Agent',
+    'WhatsApp Agent',
+    'E-Commerce Agent',
+    'Custom AI Solutions'
   ];
 
+  const year = new Date().getFullYear();
   return (
-    <footer className="bg-black border-t border-white/5 relative">
-      <div className="container mx-auto px-5">
-        {/* Main Footer Content */}
-        <div className="py-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {/* Brand Section */}
-            <motion.div 
-              className="lg:col-span-2"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <Link href="/" className="inline-block mb-6">
-                <span className="text-4xl font-black text-white tracking-tight">
-                  AutomateAce
-                </span>
-              </Link>
-              
-              <p className="text-gray-300 text-lg leading-relaxed mb-8 max-w-md">
-                Transforming businesses with cutting-edge AI solutions. 
-                We make technology work for you, not the other way around.
-              </p>
+    <motion.footer
+      className="bg-black border-t border-white/10 py-16 px-4 sm:px-6 lg:px-8"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={staggerContainer}
+    >
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          variants={fadeInUp}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12"
+        >
+          <div className="lg:col-span-2">
+            <Link href="/" className="text-3xl font-black text-white mb-4 inline-block">
+              AutomateAce
+            </Link>
 
-              {/* Contact Info */}
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3 text-gray-300">
-                  <Mail className="w-5 h-5 text-yellow-400" />
-                  <span>contact@automateace.online</span>
-                </div>
-                <div className="flex items-center gap-3 text-gray-300">
-                  <Phone className="w-5 h-5 text-yellow-400" />
-                  <span>+1 (555) 123-4567</span>
-                </div>
-                <div className="flex items-center gap-3 text-gray-300">
-                  <MapPin className="w-5 h-5 text-yellow-400" />
-                  <span>San Francisco, CA</span>
-                </div>
-              </div>
+            <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
+              Smarter Workflows. Automated Futures. We empower businesses worldwide
+              with revolutionary AI automation solutions that drive exponential
+              growth, efficiency and customer satisfaction.
+            </p>
 
-              {/* Social Links */}
-              <div className="flex gap-4">
-                {socialLinks.map((social, index) => {
-                  const IconComponent = social.icon;
-                  return (
-                    <motion.a
-                      key={index}
-                      href={social.href}
-                      className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-white hover:bg-yellow-400/10 hover:border-yellow-400/30 hover:text-yellow-400 transition-all duration-300"
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      aria-label={social.label}
-                    >
-                      <IconComponent className="w-5 h-5" />
-                    </motion.a>
-                  );
-                })}
-              </div>
-            </motion.div>
+            <p className="text-gray-400 mb-6">
+              <a
+                href="mailto:automateaceofficial@gmail.com"
+                className="hover:text-yellow-400 transition-colors"
+              >
+                automateaceofficial@gmail.com
+              </a>
+            </p>
 
-            {/* Quick Links */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              className="flex gap-4"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
             >
-              <h4 className="text-white text-xl font-bold mb-6">Quick Links</h4>
-              <ul className="space-y-4">
-                {quickLinks.map((link, index) => (
-                  <li key={index}>
-                    <Link 
-                      href={link.href}
-                      className="text-gray-300 hover:text-white transition-colors duration-300 text-lg"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Services */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="text-white text-xl font-bold mb-6">Services</h4>
-              <ul className="space-y-4">
-                {services.map((service, index) => (
-                  <li key={index}>
-                    <span className="text-gray-300 text-lg">
-                      {service}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              {socialLinks.map(({ href, icon }, i) => (
+                <motion.a
+                  key={i}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 bg-white/10 border border-white/20 rounded-xl
+                             flex items-center justify-center text-xl
+                             hover:bg-yellow-400/20 hover:border-yellow-400/40
+                             transition-all duration-300"
+                  variants={scaleIn}
+                  whileHover={{
+                    scale: 1.2,
+                    rotate: 360,
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  {icon}
+                </motion.a>
+              ))}
             </motion.div>
           </div>
-        </div>
 
-        {/* Bottom Section */}
-        <motion.div 
-          className="py-8 border-t border-white/5 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
+          <motion.div variants={fadeInLeft}>
+            <h4 className="text-white font-bold mb-6 text-lg">Quick Links</h4>
+            <ul className="space-y-3">
+              {quickLinks.map(({ href, label }, i) => (
+                <li key={i}>
+                  <Link href={href} className="text-gray-400 scroll-smooth hover:text-white transition-colors">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div variants={fadeInRight}>
+            <h4 className="text-white font-bold mb-6 text-lg">AI Solutions</h4>
+            <ul className="space-y-3">
+              {aiSolutions.map((service, i) => (
+                <li key={i}>
+                  <button
+                    onClick={onOpenModal}
+                    className="text-gray-400 hover:text-white transition-colors text-left"
+                  >
+                    {service}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          variants={fadeInUp}
+          className="border-t border-white/10 pt-8 text-center"
         >
-          <p className="text-gray-300 text-lg">
-            © 2024 AutomateAce. All rights reserved. Built with ❤️ for the future.
+          <p className="text-gray-400">
+            © {year} AutomateAce. All rights&nbsp;reserved. |
+            <a href="#" className="text-yellow-400 hover:underline ml-1">Privacy Policy</a> |
+            <a href="#" className="text-yellow-400 hover:underline ml-1">Terms of Service</a> |
+            <a href="#" className="text-yellow-400 hover:underline ml-1">AI Ethics</a>
           </p>
         </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
