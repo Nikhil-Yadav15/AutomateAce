@@ -16,8 +16,6 @@ import {
   Clock,
   HeadphonesIcon
 } from 'lucide-react';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 
 import {Spotlight} from '@/components/ui/SpotLight';
 import {ParticleBackground}  from '@/components/ui/partcle-effect';
@@ -36,7 +34,6 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Floating background elements data
   const floatingElements = [
     { icon: Bot, delay: 0, x: '75vw', y: '20vh' },
     { icon: BarChart3, delay: 1, x: '85vw', y: '60vh' },
@@ -108,8 +105,10 @@ export default function Home() {
   return (
     <>
       {/* <SmokeyBackground className="absolute inset-0" /> */}
-      <Navbar scrolled={scrolled} onGetStarted={() => setIsModalOpen(true)} />
-      <ParticleBackground />
+
+      <div className="fixed inset-0 -z-2 pointer-events-none">
+        <ParticleBackground />
+      </div>
       
       {/* Hero Section */}
       <section className="min-h-[100dvh] flex items-center relative overflow-hidden pt-[8rem] sm:pt-[6rem] lg:pt-[8rem]">
@@ -559,7 +558,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-[4.5rem] sm:py-[6rem] lg:py-[9rem] text-center relative overflow-hidden">
+      <section id="contact" className="py-[4.5rem] sm:py-[6rem] lg:py-[9rem] text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Cdefs%3E%3Cpattern id=%27grid2%27 width=%2710%27 height=%2710%27 patternUnits=%27userSpaceOnUse%27%3E%3Cpath d=%27M 10 0 L 0 0 0 10%27 fill=%27none%27 stroke=%27%23ffffff%27 stroke-width=%270.1%27 opacity=%270.1%27/%3E%3C/pattern%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grid2)%27/%3E%3C/svg%3E')] opacity-20" />
         
         <div className="container mx-auto px-[1.25rem] sm:px-[2rem] lg:px-[3rem] xl:px-[5rem] relative z-10">
@@ -610,8 +609,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }
