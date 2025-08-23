@@ -21,7 +21,7 @@ export default function AutomateAceNavbar({ scrolled, onGetStarted }) {
     },
     {
       name: "Services", 
-      link: "#services",
+      link: "/services",
     },
     {
       name: "Our Work",
