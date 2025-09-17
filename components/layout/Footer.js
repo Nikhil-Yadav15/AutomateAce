@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { FaLinkedin, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 
 export default function Footer({ onOpenModal = () => {} }) {
   const fadeInUp = {
@@ -30,10 +31,10 @@ export default function Footer({ onOpenModal = () => {} }) {
   };
 
   const socialLinks = [
-    { href: 'https://www.linkedin.com/company/automateace', icon: '💼' },
-    { href: 'https://x.com/automateaceoff?t=Xh2_kcdBRmTMpLpTaMowBA&s=08', icon: '🐦' },
-    { href: 'https://www.instagram.com/automateaceofficial/',              icon: '📷' },
-    { href: 'https://youtube.com/@automateace-90?si=im2BVNWRA5PnoA-8',    icon: '📺' }
+    { href: 'https://www.linkedin.com/company/automateace', icon: <FaLinkedin /> },
+    { href: 'https://x.com/automateaceoff?t=Xh2_kcdBRmTMpLpTaMowBA&s=08', icon: <FaTwitter /> },
+    { href: 'https://www.instagram.com/automateaceofficial/', icon: <FaInstagram /> },
+    { href: 'https://youtube.com/@automateace-90?si=im2BVNWRA5PnoA-8', icon: <FaYoutube /> }
   ];
 
   const quickLinks = [
