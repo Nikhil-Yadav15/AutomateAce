@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {ParticleBackground}  from '@/components/ui/partcle-effect';
+import { SiMake, SiZapier, SiPython, SiNodedotjs, SiTensorflow } from 'react-icons/si';
+import { FaCloud, FaCogs, FaProjectDiagram } from 'react-icons/fa';
 
 export default function WorkDonePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -156,7 +158,6 @@ export default function WorkDonePage() {
     );
   };
 
-  // Intersection Observer for counter animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -231,7 +232,7 @@ export default function WorkDonePage() {
     {
       name: "Make.com",
       description: "Advanced visual workflow automation with drag-and-drop scenario building and complex data transformations",
-      icon: "🔗",
+      icon: <SiMake className="w-6 h-6" />,
       gradient: "from-indigo-500 to-purple-600",
       badge: "2,800+ Integrations",
       badgeColor: "indigo"
@@ -239,7 +240,7 @@ export default function WorkDonePage() {
     {
       name: "Zapier",
       description: "Leading no-code automation platform with AI-powered workflows and the world's largest app ecosystem",
-      icon: "⚡",
+      icon: <SiZapier className="w-6 h-6" />,
       gradient: "from-orange-500 to-yellow-500",
       badge: "8,000+ Apps",
       badgeColor: "orange"
@@ -247,7 +248,7 @@ export default function WorkDonePage() {
     {
       name: "n8n",
       description: "Open-source powerhouse with self-hosted capabilities, AI agents, and advanced custom scripting support",
-      icon: "🌐",
+      icon: <FaCogs className="w-6 h-6" />,
       gradient: "from-pink-500 to-rose-500",
       badge: "Open Source",
       badgeColor: "pink"
@@ -255,7 +256,7 @@ export default function WorkDonePage() {
     {
       name: "Windmill",
       description: "Enterprise-grade workflow engine for developers with TypeScript, Python, and Go support for custom automation",
-      icon: "🌪️",
+      icon: <FaProjectDiagram className="w-6 h-6" />,
       gradient: "from-green-500 to-emerald-500",
       badge: "Developer-First",
       badgeColor: "green"
@@ -263,7 +264,7 @@ export default function WorkDonePage() {
     {
       name: "Python & AI/ML",
       description: "Advanced machine learning models and AI frameworks for intelligent automation",
-      icon: "🐍",
+      icon: <SiPython className="w-6 h-6" />,
       gradient: "from-yellow-400 to-yellow-300",
       badge: "AI-Powered",
       badgeColor: "yellow"
@@ -271,7 +272,7 @@ export default function WorkDonePage() {
     {
       name: "Node.js & APIs",
       description: "Scalable backend services and RESTful API development",
-      icon: "⚙️",
+      icon: <SiNodedotjs className="w-6 h-6" />,
       gradient: "from-green-400 to-green-500",
       badge: "Scalable",
       badgeColor: "green"
@@ -279,7 +280,7 @@ export default function WorkDonePage() {
     {
       name: "Cloud Infrastructure",
       description: "AWS, Azure, GCP deployment and management",
-      icon: "☁️",
+      icon: <FaCloud className="w-6 h-6" />,
       gradient: "from-blue-500 to-blue-600",
       badge: "Enterprise",
       badgeColor: "blue"
@@ -287,7 +288,7 @@ export default function WorkDonePage() {
     {
       name: "AI/ML Frameworks",
       description: "TensorFlow, PyTorch, OpenAI integration",
-      icon: "🧠",
+      icon: <SiTensorflow className="w-6 h-6" />,
       gradient: "from-purple-500 to-purple-600",
       badge: "Advanced AI",
       badgeColor: "purple"
