@@ -157,8 +157,8 @@ export const NavbarLogo = () => (
   <Image
     src="/logo.webp"
     alt="AutomateAce logo"
-    width={10} 
-    height={10}
+    width={100} 
+    height={100}
     priority
     className="rounded-full max-h-10 w-auto object-contain" 
   />
