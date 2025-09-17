@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import {ParticleBackground}  from '@/components/ui/partcle-effect';
+import { FaLightbulb, FaHandshake, FaShieldAlt, FaRocket, FaHeart, FaAward } from 'react-icons/fa';
+
 
 export default function AboutPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -144,32 +144,32 @@ export default function AboutPage() {
 
   const coreValues = [
     {
-      icon: "💡",
+      icon: <FaLightbulb className="w-6 h-6 text-yellow-500" />,
       title: "Innovation",
       description: "Constantly pushing the frontiers of AI and automation technology to deliver cutting-edge solutions that stay ahead of industry trends."
     },
     {
-      icon: "🤝",
+      icon: <FaHandshake className="w-6 h-6 text-blue-500" />,
       title: "Collaboration",
       description: "Partnering closely with clients and stakeholders to create tailored solutions that perfectly match their unique business needs."
     },
     {
-      icon: "🛡️",
+      icon: <FaShieldAlt className="w-6 h-6 text-green-500" />,
       title: "Transparency",
       description: "Ensuring data privacy, security, and transparent practices in all our interactions and solutions we develop."
     },
     {
-      icon: "🚀",
+      icon: <FaRocket className="w-6 h-6 text-red-500" />,
       title: "Agility",
       description: "Rapid development and deployment to keep pace with market needs while maintaining the highest quality standards."
     },
     {
-      icon: "❤️",
+      icon: <FaHeart className="w-6 h-6 text-pink-500" />,
       title: "Customer-Centricity",
       description: "Designing with customers' success and satisfaction in mind, ensuring every solution delivers real value and measurable results."
     },
     {
-      icon: "🏆",
+      icon: <FaAward className="w-6 h-6 text-purple-500" />,
       title: "Excellence",
       description: "Committed to delivering exceptional quality in every project, exceeding expectations through meticulous attention to detail and continuous improvement."
     }
